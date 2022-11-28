@@ -7,8 +7,7 @@
         <h3>Non hai inserito nesuna pizza</h3>
     </div>
 </div>
-<div class="row js_pizza_table d-none">
-    <h1>Guest Page</h1>
+<div class="row js_pizza_table justify-content-center d-none">
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
@@ -25,19 +24,22 @@
             res.data.forEach(pizza => {
                 console.log('pizza', pizza);
                 document.querySelector('.js_pizza_table').innerHTML +=
-                        `
-                                <div class="col-12 col-md-4 p-2">
-                                <div class="card pizza h-100">
-                                        <img src="${pizza.image}" class="card-img-top" alt="...">
-                                    <div class="card-body" style="color:black">
-                                    <h5 class="card-title">${pizza.name}</h5>
-                                    <p class="card-text">${pizza.description}</p>
-                                    <p class="card-text">Categoria: ${pizza.category.name}</p>
-
-                                    </div>
+                    `
+                             <div class="card m-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                                <div class="col-md-4">
+                                      <img src="${pizza.image}" class="card-img img-fluid" alt="...">
                                 </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                        <h5 class="card-title">${pizza.name}</h5>
+                                        <p class="card-text">${pizza.description}</p>
+                                        <p class="card-text">Categoria: ${pizza.category.name}</p>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                        `;
+                    `;
             });
         }
     }).catch(error => {
