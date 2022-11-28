@@ -15,11 +15,6 @@ namespace la_mia_pizzeria_model.Controllers.Api
             _pizzaRepository = pizzaRepository;
         }
 
-        public PizzaController()
-        {
-
-        }
-
         public IActionResult Test() 
         {
             return Ok("test");

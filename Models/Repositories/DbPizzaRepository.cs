@@ -17,6 +17,11 @@ namespace la_mia_pizzeria_model.Models.Repositories
 
         public List<Pizza> All()
         {
+            return AllWithRelations();
+        }
+
+        public List<Pizza> AllWithRelations()
+        {
             return db.Pizze.Include(pizza => pizza.Category).Include(pizza => pizza.Ingredients).ToList();
         }
 

@@ -1,4 +1,5 @@
 using la_mia_pizzeria_model.Models.Repositories;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+//builder.Services.AddControllers().AddJsonOptions(options =>
+//{
+//    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+//    options.JsonSerializerOptions.WriteIndented = true;
+//});
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -30,6 +37,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Pizza}/{action=Index}/{id?}");
+    pattern: "{controller=Guest}/{action=Index}/{id?}");
 
 app.Run();
