@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["title"] La mia pizzeria</title>
+    <title>@ViewData["title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/la_mia_pizzeria_model.styles.css" asp-append-version="true" />
@@ -23,24 +23,23 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Index">Home</a>
                         </li>
                         @*                       <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Categorie</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Categorie</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Ingredient" asp-action="Index">Ingredienti</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Ingredient" asp-action="Index">Ingredienti</a>
                         </li>*@
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="container">
