@@ -8,40 +8,42 @@
     </div>
 </div>
 <div class="row js_post_table d-none">
-    <!-- qui verranno mostrati gli elementi -->
+    <h1>Guest Page</h1>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
 
 <script type="text/javascript">
-
-    axios.get('/api/post/get').then(res =>{
+    axios.get('/api/pizza/get').then(res => {
         if (res.data.length == 0) {
-            document.querySelector('.js_no_post').classList.remove('d-none');
-            document.querySelector('.js_post_table').classList.add('d-none');
+            document.querySelector('.js_no_pizza').classList.remove('d-none');
+            document.querySelector('.js_pizza_table').classList.add('d-none');
         } else {
-            document.querySelector('.js_post_table').classList.remove('d-none');
-            document.querySelector('.js_no_post').classList.add('d-none');
-            document.querySelector('.js_post_table').innerHTML = '';
-            res.data.forEach(post => {
-                console.log('post', post);
-                document.querySelector('.js_post_table').innerHTML +=
+            document.querySelector('.js_pizza_table').classList.remove('d-none');
+            document.querySelector('.js_no_pizza').classList.add('d-none');
+            document.querySelector('.js_pizza_table').innerHTML = '';
+            res.data.forEach(pizza => {
+                console.log('pizza', pizza);
+                document.querySelector('.js_pizza_table').innerHTML +=
                     `
-                                                    <div class="col-12 col-md-4 p-2">
-                                <div class="card post h-100">
-                                  <img src="${post.image}" class="card-img-top" alt="...">
-                                  <div class="card-body">
-                                    <h5 class="card-title">${post.title}</h5>
-                                    <p class="card-text">${post.description}</p>
-                                  </div>
+                                                        <div class="col-12 col-md-4 p-2">
+                                    <div class="card pizza h-100">
+                                      <img src="${pizza.image}" class="card-img-top" alt="...">
+                                      <div class="card-body" style="color:black">
+                                        <h5 class="card-title">${pizza.name}</h5>
+                                        <p class="card-text">${pizza.description}</p>
+                                        <p class="card-text">Categoria: ${pizza.category.name}</p>
+   
+                                      </div>
+                                    </div>
                                 </div>
-                            </div>
-                            `;
+                                `;
             });
         }
-        }).catch(error => {
-            debugger;
-            console.log(error);
-        })
+    }).catch(error => {
+        debugger;
+        console.log(error);
+    })
+
 
 </script>

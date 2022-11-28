@@ -6,6 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
+
 builder.Services.AddRazorPages()
     .AddRazorRuntimeCompilation();
 
@@ -22,11 +28,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//builder.Services.AddControllers().AddJsonOptions(options =>
-//{
-//    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-//    options.JsonSerializerOptions.WriteIndented = true;
-//});
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

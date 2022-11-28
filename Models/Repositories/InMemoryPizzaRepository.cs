@@ -8,6 +8,11 @@
             return Pizze;
         }
 
+        public List<Pizza> AllWithRelations() 
+        {
+            return Pizze;
+        }
+
         public void Create(Pizza pizzaToCreate, List<int> SelectedIngredients)
         {
 
