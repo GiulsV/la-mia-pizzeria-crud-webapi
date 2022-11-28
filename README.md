@@ -1,3 +1,19 @@
+# la-mia-pizzeria-crud-webapi
+
+28/11/2022
+
+Abbiamo studiato cosa sono le WebApi...è il momento di mettere in pratica quello che abbiamo imparato.
+
+Dobbiamo quindi creare un controller Controllers/Api/PizzaController che implementerà le nostre webapi.
+
+	- Deve avere un metodo Get() che restituisca la lista delle pizze che offre la nostra pizzeria
+
+	- Dobbiamo poi modificare la nostra homepage Controller/HomeController (se volete GuestController), 
+		che richiamerà utilizzando axios il metodo Get() appena creato e che mostrerà i dati ottenuti tramite codice javascript.
+
+
+
+
 # la-mia-pizzeria-crud-mvc
 
 25/11/22
