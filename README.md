@@ -1,5 +1,20 @@
 # la-mia-pizzeria-crud-webapi
 
+29/11/2022
+
+La nostra pizzeria è quasi conclusa...ma...come fanno i nostri clienti a trovare una pizza se ne abbiamo tante nel nostro menu?
+
+Dobbiamo dargli la possibilità di ricercarle con un filtro.
+
+Modifichiamo quindi la pagina index di GuestController, aggiungendo un text input di ricerca. 
+Ogni volta che viene scritto qualcosa, il sistema deve interrogare le nostre WebApi chiedendo indietro le pizze che contengono nel titolo quello che ha chiesto l’utente, 
+e mostriamo in pagina i risultati filtrati.
+
+Al click della card di una pizza, dobbiamo essere portati a una pagina di dettaglio.
+ 
+I dati da mostrare di questa pagina devono essere richiesti alle nostra webapi tramite l’id della pizza e mostrati in pagina usando il javascript.
+
+
 28/11/2022
 
 Abbiamo studiato cosa sono le WebApi...è il momento di mettere in pratica quello che abbiamo imparato.
