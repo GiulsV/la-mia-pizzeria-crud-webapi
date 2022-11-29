@@ -45,6 +45,19 @@ namespace la_mia_pizzeria_model.Models.Repositories
             db.Pizze.Add(pizza);
             db.SaveChanges();
         }
+
+
+        public List<Pizza> SearchByTitle(string? name)
+        {
+
+            IQueryable<Pizza> query = db.Pizze.Include("Category").Include("Ingredients");
+
+            if (name == null)
+                return query.ToList();
+
+            return query.Where(post => post.Name.ToLower().Contains(name.ToLower())).ToList();
+        }
+
         public void Update(Pizza pizza, Pizza formData, List<int>? selectedIngredients)
         {
 

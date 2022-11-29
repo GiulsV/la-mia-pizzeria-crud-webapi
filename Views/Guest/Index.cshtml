@@ -2,48 +2,89 @@
     Layout = "_GuestLayout";
 }
 
+<div class="container">
+    <input id="user_search" type="text" class="js_search form-control" />
+</div>
+
 <div class="row js_no_pizza text-center d-none">
     <div class="col-12">
         <h3>Non hai inserito nesuna pizza</h3>
     </div>
 </div>
 <div class="row js_pizza_table justify-content-center d-none">
+    @*card con lista pizze*@
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+*@
+@section Scripts{
 
-<script type="text/javascript">
-    axios.get('/api/pizza/get').then(res => {
-        if (res.data.length == 0) {
-            document.querySelector('.js_no_pizza').classList.remove('d-none');
-            document.querySelector('.js_pizza_table').classList.add('d-none');
-        } else {
-            document.querySelector('.js_pizza_table').classList.remove('d-none');
-            document.querySelector('.js_no_pizza').classList.add('d-none');
-            document.querySelector('.js_pizza_table').innerHTML = '';
-            res.data.forEach(pizza => {
-                console.log('pizza', pizza);
-                document.querySelector('.js_pizza_table').innerHTML +=
-                    `
-                             <div class="card m-3" style="max-width: 540px;">
-                              <div class="row no-gutters">
+    <script type="text/javascript">
+        document.querySelector(".js_search").addEventListener('keyup', OnUserInputEvent);
+        var timeoutId = null;
+
+        function OnUserInputEvent(e) {
+
+            let query = e.target.value;
+
+            if (timeoutId != null)
+                clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                axios.get('/api/pizza/search', {
+                    params: {
+                        name: query
+                    }
+                }).then(response => {
+                    RenderPost(response.data);
+                }).catch(error => {
+                    console.log(error);
+                })
+
+            }, 300);
+
+        }
+
+        console.log("dopo", document.querySelector(".js_search").value);
+        axios.get('/api/pizza/get').then(res => {
+            RenderPost(res.data);
+        }).catch(error => {
+            debugger;
+            console.log(error);
+        })
+        function RenderPost(data) {
+
+            if (data.length == 0) {
+                document.querySelector('.js_no_pizza').classList.remove('d-none');
+                document.querySelector('.js_pizza_table').classList.add('d-none');
+            } else {
+                document.querySelector('.js_pizza_table').classList.remove('d-none');
+                document.querySelector('.js_no_pizza').classList.add('d-none');
+                document.querySelector('.js_pizza_table').innerHTML = '';
+
+                data.forEach(pizza => {
+
+                    console.log('pizza', pizza);
+
+                    document.querySelector('.js_pizza_table').innerHTML +=
+                        `
+                                <div class="card m-3" style="max-width: 540px;">
+                                <div class="row no-gutters">
                                 <div class="col-md-4">
-                                      <img src="${pizza.image}" class="card-img img-fluid" alt="...">
+                                        <img src="${pizza.image}" class="card-img img-fluid" alt="...">
                                 </div>
                                 <div class="col-md-8">
-                                  <div class="card-body">
+                                    <div class="card-body">
                                         <h5 class="card-title">${pizza.name}</h5>
                                         <p class="card-text">${pizza.description}</p>
                                         <p class="card-text">Categoria: ${pizza.category.name}</p>
-                                  </div>
+                                    </div>
                                 </div>
-                              </div>
+                                </div>
                             </div>
-                    `;
-            });
+                        `;
+                });
+            }
         }
-    }).catch(error => {
-        debugger;
-        console.log(error);
-    })
-</script>
+
+    </script>
+}

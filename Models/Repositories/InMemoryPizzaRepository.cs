@@ -1,4 +1,6 @@
-﻿namespace la_mia_pizzeria_model.Models.Repositories
+﻿using Microsoft.Extensions.Hosting;
+
+namespace la_mia_pizzeria_model.Models.Repositories
 {
     public class InMemoryPizzaRepository : IPizzaRepository
     {
@@ -59,6 +61,11 @@
             {
                 pizza.Ingredients.Add(new Ingredient() { Id = ingredientId, Name = "Fake ingredient title " + ingredientId });
             }
+        }
+
+        public List<Pizza> SearchByTitle(string? name)
+        {
+            throw new NotImplementedException();
         }
     }
 }
