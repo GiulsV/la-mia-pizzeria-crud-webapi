@@ -3,6 +3,7 @@
 }
 
 <div class="container">
+    <h3>Cerca una pizza</h3>
     <input id="user_search" type="text" class="js_search form-control" />
 </div>
 
@@ -11,9 +12,16 @@
         <h3>Non hai inserito nesuna pizza</h3>
     </div>
 </div>
-<div class="row js_pizza_table justify-content-center d-none">
-    @*card con lista pizze*@
+<div class="container">
+    <div class="row  justify-content-center">
+        <h3 class="text-center m-3">Elenco Pizze</h3>
+        <div class="col-6 js_pizza_table  d-none">
+            <!--card con lista pizze cliccabili per i dettagli-->
+        </div>
+
+    </div>
 </div>
+
 
 @*<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
 *@
@@ -44,7 +52,7 @@
 
         }
 
-        console.log("dopo", document.querySelector(".js_search").value);
+        console.log(document.querySelector(".js_search").value);
         axios.get('/api/pizza/get').then(res => {
             RenderPost(res.data);
         }).catch(error => {
@@ -67,20 +75,23 @@
 
                     document.querySelector('.js_pizza_table').innerHTML +=
                         `
-                                <div class="card m-3" style="max-width: 540px;">
-                                <div class="row no-gutters">
-                                <div class="col-md-4">
-                                        <img src="${pizza.image}" class="card-img img-fluid" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${pizza.name}</h5>
-                                        <p class="card-text">${pizza.description}</p>
-                                        <p class="card-text">Categoria: ${pizza.category.name}</p>
+                                     <a href="/Guest/Detail/${pizza.id}" class="text-decoration-none text-dark overflow-hidden">
+
+                                    <div class="card m-3" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                            <img src="${pizza.image}" class="card-img img-fluid" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${pizza.name}</h5>
+                                            <p class="card-text">${pizza.description}</p>
+                                            <p class="card-text">Categoria: ${pizza.category.name}</p>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
-                                </div>
-                            </div>
+                            </a>
                         `;
                 });
             }
