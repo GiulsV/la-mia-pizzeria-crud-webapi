@@ -38,7 +38,13 @@
                 title: document.querySelector('#contact-title').value,
                 text: document.querySelector('#contact-text').value,
            }).then(res =>{
-                swal("Messaggio inserito correttamente!","success");
+                swal({
+                    title: "Messaggio inviato",
+                    text: "Messaggio inviato con successo!",
+                    type: "success"
+                }).then(function() {
+                    window.location.href = "https://localhost:7236";
+                });
                 document.querySelector('#contact-title').value = '';
                 document.querySelector('#contact-text').value = '';
            }).catch(error =>{
