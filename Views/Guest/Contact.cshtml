@@ -8,18 +8,22 @@
             <div class="mb-3">
                 <label for="contact-email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="contact-email">
+                <small id="errorMail" class="text-danger"></small>
             </div>
             <div class="mb-3">
                 <label for="contact-nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="contact-nome">
+                <small id="errorNome" class="text-danger"></small>
             </div>
             <div class="mb-3">
                 <label for="contact-title" class="form-label">Titolo</label>
                 <input type="text" class="form-control" id="contact-title">
+                <small id="errorTitle" class="text-danger"></small>
             </div>
             <div class="mb-3">
                 <label for="contact-text" class="form-label">Testo</label>
                 <textarea class="form-control" id="contact-text" rows="10"></textarea>
+                <small id="errorText" class="text-danger"></small>
             </div>
             <input type="submit" class="btn btn-primary" value="Invia" />
         </form>
@@ -29,6 +33,15 @@
 @section Scripts{
 
     <script type="text/javascript">
+
+        function clear(){
+            document.getElementById('errorMail').innerHTML = "";
+            document.getElementById('errorNome').innerHTML = "";
+            document.getElementById('errorTitle').innerHTML = "";
+            document.getElementById('errorText').innerHTML = "";
+        }
+
+
         function inviaMessaggio(e){
 
              e.preventDefault();
@@ -49,7 +62,18 @@
                 document.querySelector('#contact-text').value = '';
            }).catch(error =>{
 
-                console.log(error.response.data.errors);
+                if (error.response.data.errors.Nome != undefined) {
+                    document.getElementById('errorNome').innerHTML += error.response.data.errors.Nome;
+                }
+                if (error.response.data.errors.Title != undefined) {
+                    document.getElementById('errorTitle').innerHTML += error.response.data.errors.Title;
+                }
+                if (error.response.data.errors.Text != undefined) {
+                    document.getElementById('errorText').innerHTML += error.response.data.errors.Text;
+                }
+                for (let i = 0; i < error.response.data.errors.Email.length; i++) {
+                    document.getElementById('errorMail').innerHTML += error.response.data.errors.Email[i];
+                };
            })
         }
     </script>
