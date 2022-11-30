@@ -1,5 +1,24 @@
 # la-mia-pizzeria-crud-webapi
 
+
+30/11/2022
+
+Il rapporto con i clienti è importante…quindi perchè non permettergli di inviarci dei messaggi?
+
+Creiamo il nostro model Message e relativa migration per gestire i seguenti dati
+	- Email dell’utente
+	- nome dell’utente
+	- titolo del messaggio
+	- testo del messaggio
+
+Create una nuova pagina di contatto nel vostro GuestController che gestisca la costruzione del form di contatto.
+
+Creiamo un nuovo ApiController per gestire la chiamata post che faremo con axios + js all’interno della pagina di contatto.
+
+Bonus: 
+provare a gestire anche la gestione degli errori di validazione sfruttando gli oggetti del model state. (quindi con javascript nella sezione catch di axios)
+
+
 29/11/2022
 
 La nostra pizzeria è quasi conclusa...ma...come fanno i nostri clienti a trovare una pizza se ne abbiamo tante nel nostro menu?
