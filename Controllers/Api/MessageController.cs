@@ -14,8 +14,9 @@ namespace la_mia_pizzeria_model.Controllers.Api
         {
             db = _db;
         }
-        [HttpPost]
         
+        
+        [HttpPost]
         public IActionResult Create([FromBody] Message message)
         {
 

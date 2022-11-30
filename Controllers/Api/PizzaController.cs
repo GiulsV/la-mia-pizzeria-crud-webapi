@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace la_mia_pizzeria_model.Controllers.Api
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]", Order = 1)]
     [ApiController]
     public class PizzaController : ControllerBase
     {
@@ -22,23 +22,48 @@ namespace la_mia_pizzeria_model.Controllers.Api
             return Ok(pizzas);
         }
 
-
-        public IActionResult Search(string? name)
+        [HttpGet]
+        public IActionResult Get(string? title)
         {
-
-            List<Pizza> pizzas = _pizzaRepository.SearchByTitle(name);
+            List<Pizza> pizzas = _pizzaRepository.SearchByTitle(title);
 
             return Ok(pizzas);
 
         }
 
-
         [HttpGet("{id}")]
-        public IActionResult Detail(int id)
+        public IActionResult Get(int id)
         {
-            Pizza pizza = _pizzaRepository.GetById(id);
+            Pizza pizzas = _pizzaRepository.GetById(id);
 
-            return Ok(pizza);
+            return Ok(pizzas);
+        }
+
+
+        ////SEARCH
+        //public IActionResult Search(string? name)
+        //{
+
+        //    List<Pizza> pizzas = _pizzaRepository.SearchByTitle(name);
+
+        //    return Ok(pizzas);
+
+        //}
+
+        ////DETAIL
+        //[HttpGet("{id}")]
+        //public IActionResult Detail(int id)
+        //{
+        //    Pizza pizza = _pizzaRepository.GetById(id);
+
+        //    return Ok(pizza);
+        //}
+
+        //UPDATE
+        [HttpPost]
+        public IActionResult Update(Pizza pizza)
+        {
+            return Ok("ok");
         }
     }
 }

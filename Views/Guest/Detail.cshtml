@@ -19,7 +19,7 @@
 
     <script type="text/javascript">
   
-        axios.get(`/api/pizza/detail/${@Model}`).then(res =>{
+        axios.get(`/api/pizza/${@Model}`).then(res =>{
             const pizza = res.data;
             document.querySelector('.js_pizza_container').innerHTML +=
                 `

@@ -1,3 +1,4 @@
+using la_mia_pizzeria_model.Data;
 using la_mia_pizzeria_model.Models.Repositories;
 using System.Text.Json.Serialization;
 
@@ -11,6 +12,8 @@ builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     options.JsonSerializerOptions.WriteIndented = true;
 });
+
+builder.Services.AddDbContext<PizzeriaDbContext>();
 
 builder.Services.AddRazorPages()
     .AddRazorRuntimeCompilation();

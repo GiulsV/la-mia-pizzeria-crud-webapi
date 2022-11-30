@@ -38,7 +38,7 @@
             if (timeoutId != null)
                 clearTimeout(timeoutId);
             timeoutId = setTimeout(() => {
-                axios.get('/api/pizza/search', {
+                axios.get('/api/pizza', {
                     params: {
                         name: query
                     }
@@ -53,7 +53,7 @@
         }
 
         console.log(document.querySelector(".js_search").value);
-        axios.get('/api/pizza/get').then(res => {
+        axios.get('/api/pizza').then(res =>{
             RenderPost(res.data);
         }).catch(error => {
             debugger;

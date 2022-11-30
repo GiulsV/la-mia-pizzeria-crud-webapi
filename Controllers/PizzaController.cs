@@ -8,14 +8,20 @@ using la_mia_pizzeria_model.Models.Repositories;
 
 namespace la_mia_pizzeria_model.Controllers
 {
+    [Route("[controller]/[action]/{id?}", Order = 0)]
     public class PizzaController : Controller
     {
+        PizzeriaDbContext db;
+
         DbPizzaRepository pizzaRepository;
         DbCategoryRepository categoryRepository;
         DbIngredientRepository ingredientRepository;
 
-        public PizzaController() : base()
+        public PizzaController(IPizzaRepository _pizzaRepository, PizzeriaDbContext _db) : base()
         {
+            db = _db;
+            pizzaRepository = (DbPizzaRepository?)_pizzaRepository;
+
             pizzaRepository = new DbPizzaRepository();
             categoryRepository = new DbCategoryRepository();
             ingredientRepository = new DbIngredientRepository();

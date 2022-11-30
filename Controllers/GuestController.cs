@@ -19,5 +19,12 @@ namespace la_mia_pizzeria_model.Controllers
             ViewData["name"] = "Dettaglio Pizza";
             return View(id);
         }
+
+        public IActionResult Contact()
+        {
+            ViewData["title"] = "Contattaci";
+            return View();
+        }
+
     }
 }
