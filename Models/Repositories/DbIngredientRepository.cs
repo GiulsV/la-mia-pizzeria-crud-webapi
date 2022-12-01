@@ -6,10 +6,10 @@ namespace la_mia_pizzeria_model.Models.Repositories
     public class DbIngredientRepository : IIngredientRepository
     {
         PizzeriaDbContext db;
-        public DbIngredientRepository()
-        {
-            db = PizzeriaDbContext.Instance;
-        }
+        //public DbIngredientRepository()
+        //{
+        //    db = PizzeriaDbContext.Instance;
+        //}
         public List<Ingredient> All()
         {
             return db.Ingredients.Include("Pizze").ToList();

@@ -6,10 +6,10 @@ namespace la_mia_pizzeria_model.Models.Repositories
     public class DbCategoryRepository : ICategoryRepository
     {
         PizzeriaDbContext db;
-        public DbCategoryRepository()
-        {
-            db = PizzeriaDbContext.Instance;
-        }
+        //public DbCategoryRepository()
+        //{
+        //    db = PizzeriaDbContext.Instance;
+        //}
         public List<Category> All()
         {
             return db.Categories.Include("Pizze").ToList();

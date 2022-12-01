@@ -7,19 +7,13 @@ namespace la_mia_pizzeria_model.Data
 {
     public class PizzeriaDbContext : IdentityDbContext<IdentityUser>
     {
-        private static PizzeriaDbContext _instance;
-        public static PizzeriaDbContext Instance
-        {
-            get { return _instance ?? (_instance = new PizzeriaDbContext()); }
-        }
+
         public DbSet<Pizza> Pizze { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
 
         public DbSet<Message> Messages { get; set; }
-        public PizzeriaDbContext()
-        {
-        }
+
 
         public PizzeriaDbContext(DbContextOptions<PizzeriaDbContext> options): base(options)
         {
