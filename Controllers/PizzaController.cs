@@ -5,9 +5,11 @@ using la_mia_pizzeria_model.Models.Form;
 using Microsoft.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using la_mia_pizzeria_model.Models.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace la_mia_pizzeria_model.Controllers
 {
+    [Authorize]
     [Route("[controller]/[action]/{id?}", Order = 0)]
     public class PizzaController : Controller
     {

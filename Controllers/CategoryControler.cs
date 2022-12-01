@@ -1,11 +1,13 @@
 ﻿using la_mia_pizzeria_model.Data;
 using la_mia_pizzeria_model.Models;
 using la_mia_pizzeria_model.Models.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace la_mia_pizzeria_model.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         DbCategoryRepository categoryRepository;

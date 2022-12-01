@@ -1,11 +1,13 @@
 ﻿using la_mia_pizzeria_model.Models;
 using la_mia_pizzeria_model.Models.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 
 
 namespace la_mia_pizzeria_model.Controllers.Api
 {
+
     [Route("api/[controller]", Order = 1)]
     [ApiController]
     public class PizzaController : ControllerBase

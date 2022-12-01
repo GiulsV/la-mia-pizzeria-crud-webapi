@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace la_mia_pizzeria_model.Controllers
 {
+    [Authorize]
     public class GuestController : Controller
     {
         public IActionResult Index()

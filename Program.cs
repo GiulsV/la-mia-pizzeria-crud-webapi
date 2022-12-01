@@ -1,9 +1,13 @@
 using la_mia_pizzeria_model.Data;
 using la_mia_pizzeria_model.Models.Repositories;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var connectionString = builder.Configuration.GetConnectionString("PizzeriaDbContextConnection");builder.Services.AddDbContext<PizzeriaDbContext>(options =>
+    options.UseSqlServer(connectionString));builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<PizzeriaDbContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -37,8 +41,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
+
+//prima del MapControllerRoute
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
