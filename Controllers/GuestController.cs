@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace la_mia_pizzeria_model.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class GuestController : Controller
     {
         public IActionResult Index()

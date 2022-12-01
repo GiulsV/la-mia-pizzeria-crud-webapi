@@ -12,29 +12,92 @@
             </div>
         </div>
     </div>
-</div>
-
-
-@section Scripts{
-
-    <script type="text/javascript">
-  
-        axios.get(`/api/pizza/${@Model}`).then(res =>{
-            const pizza = res.data;
-            document.querySelector('.js_pizza_container').innerHTML +=
-                `
-                    <div class="col-12 col-md-4 p-2">
-                          <div class="card pizza h-100">
-                                <img src="${pizza.image}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title">${pizza.name}</h5>
-                                <p class="card-text">${pizza.description}</p>
-                                <p class="card-text">${pizza.price} €</p>
-                                <p class="card-text">${pizza.category.name}</p>
-                                </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>
+                Lascia un commento:
+            </h3>
+            <div>
+                <form onsubmit="sendComment(event)">
+                    @*UserName*@
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nome:</label>
+                        <input type="text" class="form-control" id="name">
+                        <div id="error-name">
                         </div>
                     </div>
-                    `;
-        }).catch(error => console.log(error))
-    </script>
-}
+                    @*UserEmail*@
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="text" class="form-control" id="email">
+                        <div id="error-mail">
+                        </div>
+                    </div>
+                    @*CommentTxt*@
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Commento:</label>
+                        <textarea id="comment" class="form-control" rows="5"></textarea>
+                        <div id="error-comment">
+                        </div>
+                    </div>
+                    @*Rate*@
+                    <div class="mb-3">
+                        <label for="rate" class="form-label">Voto:</label>
+                        <input type="number" class="form-control" id="rate">
+                        <div id="error-rate">
+                        </div>
+                    </div>
+
+                    <button type="submit" value="submit" class="btn btn-primary">Invia</button>
+                </form>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+    @section Scripts{
+
+        <script type="text/javascript">
+
+            axios.get(`/api/pizza/${@Model}`).then(res => {
+                const pizza = res.data;
+                document.querySelector('.js_pizza_container').innerHTML +=
+                                `
+                                    <div class="col-12 col-md-4 p-2">
+                                            <div class="card pizza h-100">
+                                                <img src="${pizza.image}" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${pizza.name}</h5>
+                                                <p class="card-text">${pizza.description}</p>
+                                                <p class="card-text">${pizza.price} €</p>
+                                                <p class="card-text">${pizza.category.name}</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                 `;
+            }).catch(error => console.log(error))
+
+            function sendComment(e) {
+                const userName = document.querySelector('#name');
+                const userEmail = document.querySelector('#email');
+                const userText = document.querySelector('#comment');
+                const userRate = document.querySelector('#rate');
+                e.preventDefault();
+                axios.post('/api/comment/create', {
+                    name: userName.value,
+                    email: userEmail.value,
+                    comment: userText.value,
+                    rate: userRate.value,
+                }).then(res => {
+                    swal("messaggio inserito correttamente", "success");
+                        userName.value = '';
+                        userEmail.value = '';
+                        userText.value = '';
+                        userRate.value = '';
+                }).catch(error => {
+                    console.log(error);
+                })
+            }
+        </script>
+    }

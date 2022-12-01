@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace la_mia_pizzeria_model.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CategoryController : Controller
     {
         DbCategoryRepository categoryRepository;
