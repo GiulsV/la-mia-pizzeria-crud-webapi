@@ -77,27 +77,6 @@
                                     </div>
                                  `;
             }).catch(error => console.log(error))
-
-            function sendComment(e) {
-                const userName = document.querySelector('#name');
-                const userEmail = document.querySelector('#email');
-                const userText = document.querySelector('#comment');
-                const userRate = document.querySelector('#rate');
-                e.preventDefault();
-                axios.post('/api/comment/create', {
-                    name: userName.value,
-                    email: userEmail.value,
-                    comment: userText.value,
-                    rate: userRate.value,
-                }).then(res => {
-                    swal("messaggio inserito correttamente", "success");
-                        userName.value = '';
-                        userEmail.value = '';
-                        userText.value = '';
-                        userRate.value = '';
-                }).catch(error => {
-                    console.log(error);
-                })
             }
         </script>
     }
