@@ -28,6 +28,7 @@ namespace la_mia_pizzeria_model.Models
         //INGREDIENT
         public List<Ingredient>? Ingredients { get; set; }
 
+        public List<Comment>? Comments { get; set; }
 
         //costruttore vuoto
         public Pizza(){

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using la_mia_pizzeria_model.Data;
 
@@ -11,9 +12,11 @@ using la_mia_pizzeria_model.Data;
 namespace lamiapizzeriamodel.Migrations
 {
     [DbContext(typeof(PizzeriaDbContext))]
-    partial class PizzeriaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221201135717_CommentModel")]
+    partial class CommentModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
