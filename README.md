@@ -1,5 +1,20 @@
 # la-mia-pizzeria-crud-webapi
 
+01/12/2022
+
+Autenticazione
+
+	Proteggiamo le nostre pagine di gestione delle pizze!
+	Aggiungiamo tutto il necessario per la login e la registrazione.
+	Ricordiamoci poi di bloccare l’accesso al nostro controller delle Pizze con [Authorize] e a tutti i controller (non quelli API) per gestire ingredienti e categorie (in caso li abbiate realizzati).
+
+Put e Delete ajax
+
+	Per chi termina la parte precedente, proviamo a gestire anche le chiamate di put e delete aggiungendo una nuova funzionalità. 
+	Mettiamo a disposizione degli utenti (per semplicità non loggati) un API per inserire dei commenti sotto al dettaglio delle nostre pizze. 
+	L’utente potrà quindi effettuare tutte le operazioni CRUD sui commenti relativi alla pizza.
+
+
 
 30/11/2022
 
